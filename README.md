@@ -1,2 +1,2 @@
 # ripka-climate.com
-web-site on django, ngnix, python
+web-site on Django with Postgres, Nginx, and Gunicorn
