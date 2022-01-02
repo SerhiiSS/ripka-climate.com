@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mt-5 card card-body" style="background-color: #e3f2fd;">
+
+                                <form method="get">
+                                    {{filter.form|bootstrap}}
+
+                                <button class=" mt-2 btn btn-primary" type="submit">Пошук</button>
+                              </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="list-group">
+                    </div>
+                </div>
+                <div class="col-lg-9">
+        <div class="container">
+            <div class="row">
+        {% for product in category_products %}
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="mt-5 card h-90 border-light">
+                <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{{ product.image.url }}" alt="" /></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h4>
+                        <h5>{{ product.price }} грн.</h5>
+                        <a href="{% url 'add_to_cart' slug=product.slug %}">
+                        <button class="btn btn-danger">В корзину</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
+            </div>
+        </div>
+
+{% endblock content %}

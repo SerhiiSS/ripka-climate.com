@@ -1,0 +1,187 @@
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>РІПКА КЛІМАТ</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="../../media/1135215.ico" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+
+
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+            <div class="container-fluid" >
+
+                <a class="navbar-brand" href="/">
+                <img src="../media/logo_ripka.png" alt="">
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active"><a class="nav-link" href="/">Головна</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="/category/conditioners" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Кондиціонери
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item active" href="/category/conditioners">Усі кондиціонери</a>
+                                <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="/category/conditioners/?conditioner_type=Настінні+спліт-системи">Настінні спліт-системи</a>
+                              <a class="dropdown-item" href="/category/conditioners/?conditioner_type=Мультиспліт-системи">Мультиспліт-системи</a>
+                              <a class="dropdown-item" href="/category/conditioners/?conditioner_type=Мобільні+кондиціонери">Мобільні кондиціонери</a>
+                              <a class="dropdown-item" href="/category/conditioners/?conditioner_type=Кондиціонери+на+стелю">Кондиціонери на стелю</a>
+                              <a class="dropdown-item" href="/category/conditioners/?conditioner_type=Касетні+кондиціонери">Касетні кондиціонери</a>
+                              <a class="dropdown-item" href="/category/conditioners/?conditioner_type=Канальні+кондиціонери">Канальні кондиціонери</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="category/conditioners/?invertor=Так" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              Інверторні
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <a class="dropdown-item active" href="category/conditioners/?invertor=Так">Усі інверторні</a>
+                                <div class="dropdown-divider"></div>
+                              <a class="dropdown-item" href="/category/conditioners/?recommended_area=до+20&invertor=Так">До 20 м²</a>
+                              <a class="dropdown-item" href="/category/conditioners/?recommended_area=до+25&invertor=Так">До 25 м²</a>
+                              <a class="dropdown-item" href="/category/conditioners/?recommended_area=до+35&invertor=Так">До 35 м²</a>
+                              <a class="dropdown-item" href="/category/conditioners/?recommended_area=до+45&invertor=Так">До 45 м²</a>
+                              <a class="dropdown-item" href="/category/conditioners/?recommended_area=до+50&invertor=Так">До 50 м²</a>
+                              <a class="dropdown-item" href="/category/conditioners/?recommended_area=до+60&invertor=Так">До 60 м²</a>
+                              <a class="dropdown-item" href="/category/conditioners/?recommended_area=до+70&invertor=Так">До 70 м²</a>
+                              <a class="dropdown-item" href="/category/conditioners/?recommended_area=>+70&invertor=Так">Більше 70 м²</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="/installation">Установка</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/payment_delivery">Оплата та доставка</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/service">Сервіс</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/contacts">Контакти</a></li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        {% if not request.user.is_authenticated %}
+                        <li>
+                            <a class="nav-link" href="{% url 'login' %}">Авторизація</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="{% url 'registration' %}">Реєстрація</a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            {% if request.user.is_authenticated %}
+                            <span class="navbar text">
+                                <span class="badge bg-primary" style="margin-left: 5px">
+                            <a style="text-decoration: none; font-size:14px; color:white;" href="{% url 'profile' %}">
+                            {{ request.user.username }}
+                            </a>
+                            | <a style="text-decoration: none; font-size:14px; color:white; " href="{% url 'logout' %}"> Вийти </a>  {% endif %}
+                                </span>
+                            </span>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'cart' %}"> Корзина: <span class="badge bg-pill bg-danger">{{ cart.products.count }}</span></a>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+
+<div class="container">
+<!--    <h5 class="text-end mt-3" style="">Є запитання? Ми зателефонуємо</h5>-->
+
+    <div class="col-lg-4 col-md-4 mb-2 ms-auto">
+        <div class="d-grid gap-2">
+        <button class="btn btn-light btn-lg mt-2" style="background-color: #e3f2fd;">Є запитання? Ми зателефонуємо</button>
+        </div>
+        <form action="{% url 'callback' %}", method="post"> {% csrf_token %}
+          <div class="input-group mb-2 mt-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">+38</div>
+            </div>
+            <input type="text" class="form-control" name="phone" placeholder="Ваш номер" style="height: 38px">
+            <button type="submit" class="btn btn-primary mb-2">Зателефонувати</button>
+          </div>
+        </form>
+    </div>
+</div>
+
+{% block content %}
+        <div class="container">
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <strong>{{ message }}</strong>
+                      <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close"></button>
+                      <span aria-hidden="true">&times;</span>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    <div class="carousel slide my-4" id="carouselExampleIndicators" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li class="active" data-target="#carouselExampleIndicators" data-slide-to="0"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner" role="listbox">
+                            <div class="carousel-item active"><img class="d-block img-fluid" src="media/bg_slide1600x400.png" alt="First slide" /></div>
+<!--                            <div class="carousel-item"><img class="d-block img-fluid" src="https://via.placeholder.com/900x350" alt="Second slide" /></div>-->
+<!--                            <div class="carousel-item"><img class="d-block img-fluid" src="https://via.placeholder.com/900x350" alt="Third slide" /></div>-->
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only"> <<< </span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only"> >>> </span>
+                        </a>
+                    </div>
+                    <div class="row">
+
+                        {% for product in products %}
+                            {% if product.for_main_page %}
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100 border-light" style="background-color: #e3f2fd;">
+                                <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{{ product.image.url }}" alt="" /></a>
+                                <div class="card-body">
+                                    <h4 class="card-title">
+                                        <a href="{{ product.get_absolute_url }}">{{ product.title }}</a></h4>
+                                    <h5>{{ product.price }} грн.</h5>
+                                    <a href="{% url 'add_to_cart' slug=product.slug %}">
+                                        {% if not request.user.is_authenticated %}
+                                        <button class="btn btn-danger"><a href="/registration" style="color: white"> В корзину </a></button>
+                                        {% else %}
+                                        <button class="btn btn-danger">В корзину</button>
+                                        {% endif %}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endblock content %}
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+        <footer class="mt-5 py-5 bg-dark">
+            <div class="container" style="color: white">
+                <h4 class="text-center">ripka.climat@gmail.com +380-95-149-09-32 +380-96-845-07-74</h4>
+            </div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; <a href="https://www.linkedin.com/in/yurii-moskovchuk-a50683165/" style="color: white">Yurii Moskovchuk</a></p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Core theme JS-->
+<!--        <script src="js/scripts.js"></script>-->
+    </body>
+</html>
